@@ -12,14 +12,16 @@ const searchContainer = document.querySelector('#searchContainer');
 const addLocationInput = document.querySelector('#addLocationInput');
 const addGuestsInput = document.querySelector('#addGuestsInput');
 const searchButton = document.querySelector('#searchButton');
+const ocultarsearch = document.querySelector('#ocultar-logo');
 
 // Funcion para colapsar los input
 const collapseInputs = () => {
     logo.classList.add('hidden');
-    searchContainer.classList.add("w-full", "justify-center");
+    searchContainer.classList.add("w-full", "justify-center", "h-15");
     addLocationInput.classList.add("w-full");
     addGuestsInput.classList.add("w-full");
-    searchButton.classList.remove("hidden");
+    searchButton.classList.remove("hidden", "w-full");
+    ocultarsearch.classList.add('hidden');
 }
 
 // Funcion para restaurar el estado original de los input
@@ -32,7 +34,7 @@ const restoreInputs = () => {
 }
 
 // Agregando eventos a los inputs
-addLocationInput.addEventListener('click', collapseInputs);
-addGuestsInput.addEventListener('click', collapseInputs);
+addLocationInput.addEventListener('focus', collapseInputs);
+addGuestsInput.addEventListener('focus', collapseInputs);
 searchButton.addEventListener('click', restoreInputs);
 

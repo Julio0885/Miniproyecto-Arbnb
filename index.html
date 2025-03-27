@@ -11,35 +11,37 @@
 
 <body>
     <header class="flex flex-col sm:flex-row sm:justify-between items-center mt-8 px-4 py-4">
-        <figure class="flex items-center  mb-4 sm:mb-0 mt-2 ml-16 ">
+        <figure class="flex items-center mb-4 sm:mb-0 mt-2 ml-16 ">
             <img id="logo" class="flex" src="./src/images/icons/logo-f7862584.svg" alt="Windbnd Logo">
         </figure>
-        <div id="searchContainer" class="relative flex  justify-center sm:flex-row sm:justify-end items-center mx-auto px-8 py-2 mr-8 
-                bg-white-700 rounded-lg shadow-md overflow-hidden">
+        <div id="searchContainer" class="relative flex justify-center sm:flex-row sm:justify-end items-center mx-auto px-8 py-2 mr-8 
+                bg-white-700 rounded-lg shadow-md">
             <button id="botoncerrar" class="hidden font-bold text-2xl text-white">X</button>
-            <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" tipe="text" name="" id="addLocationInput"
-                placeholder="Add location">
-            <div class="hidden absolute top-full  left-0 p-8  bg-white border border-gray-200 rounded-lg shadow-md z-10"
-                id="citiesContainer">
-                <ul class="text-decoration-none">
-                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        ciudad1
-                    </li>
-                </ul>
-                <ul class="text-decoration-none">
-                    <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        ciudad2
-                    </li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                </ul>
-                <ul class="text-decoration-none">
-                    <li>
-                        ciudad3
-                    </li>
-                </ul>
-            </div>
+            <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addLocationInput" placeholder="Add location">
+            <ul id="citiesContainer" class="hidden absolute text-decoration-none top-full left-0 p-8 text-black bg-gray-100 shadow-md z-50">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad1</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad2</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad3</li>
+            </ul>
             <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addGuestsInput"
-                placeholder="Add guests">
-            <button id="searchButton" class="hidden flex items-center px-2 py-2 w-50 h-10 bg-red-500 text-white 
+                placeholder="Add guests" value="0">
+                <div id="button-guest-container" class="hidden absolute text-center bg-gray-200 top-full left-0 p-4 h-70 w-50">
+                    <div id="button-guest" class=" items-center p-4 text-white shadow-md z-50">
+                        <p class="justify-center text-1xl text-black">Adults</p>
+                        <span class="mb-4 ">Age 13 or Above</span><br>
+                        <button id="resta" class="px-2 mt-2 bg-black text-2xl text-white" value="-">-</button>
+                        <span id="display" class="text-black">0</span>
+                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white" value="+">+</button>
+                    </div>
+                    <div id="button-guest-N" class="justify-center items-center text-white">
+                        <p class="justify-center text-1xl text-black">Childrens</p>
+                        <span class="mb-4 ">Age 13 or Above</span><br>
+                        <button id="resta" class="px-2  mt-2 bg-black text-2xl text-white" value="-">-</button>
+                        <span id="display-n" class="text-black">0</span>
+                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white" value="+">+</button>
+                    </div>
+                </div>
+            <button id="searchButton" class="hidden flex flex-col md:flex-row justify-center items-center px-2 py-2 w-50 h-10 bg-red-500 text-white 
                     rounded-lg ml-2 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="white" class="size-4 justify-center mt-1 ml-2 mr-2">
@@ -49,7 +51,7 @@
                 Search
             </button>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
-                id="ocultar-logo" class="size-6 justify-center mt-2 ml-2">
+                id="ocultar-logo" class="flex flex-col md:flex-row size-6 justify-center mt-2 ml-2 ">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
@@ -57,7 +59,7 @@
     </header>
     <div class="flex justify-between items-center mt-8 mb-8 ml-12 mr-12">
         <h2>Stays in Fynlandia</h2>
-        <p>12 +stays</p>
+        <p><span>12 +</span>stays</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 ml-12 mr-12">
         <div class="flex flex-col ">
@@ -85,8 +87,7 @@
 
             <div>
                 <button id="supper" class="w-30 p-2 border border-black rounded-lg inline-block">Supper host</button>
-                <p id="type-aparment" class=" ml-4 mt-2 inline-block">Entire aparment</p>
-                <p id="num-bed" class=" ml-2 mt-2 inline-block">.2 bed</p>
+                <p id="type-aparment" class=" ml-4 mt-2 inline-block">Entire aparment .2 bed</p>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
                     class="size-6  ml-6 mt-1 inline-block">
                     <path stroke-linecap="round" stroke-linejoin="round"

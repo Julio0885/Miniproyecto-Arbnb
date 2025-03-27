@@ -177,8 +177,8 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
-  .z-10 {
-    z-index: 10;
+  .z-50 {
+    z-index: 50;
   }
   .mx-auto {
     margin-inline: auto;
@@ -194,6 +194,9 @@
   }
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
+  }
+  .mt-70 {
+    margin-top: calc(var(--spacing) * 70);
   }
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
@@ -251,11 +254,20 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
-  .h-15 {
-    height: calc(var(--spacing) * 15);
+  .h-50 {
+    height: calc(var(--spacing) * 50);
+  }
+  .h-70 {
+    height: calc(var(--spacing) * 70);
+  }
+  .h-90 {
+    height: calc(var(--spacing) * 90);
   }
   .min-h-\[400px\] {
     min-height: 400px;
+  }
+  .min-h-\[500px\] {
+    min-height: 500px;
   }
   .w-30 {
     width: calc(var(--spacing) * 30);
@@ -263,8 +275,14 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
   .w-50 {
     width: calc(var(--spacing) * 50);
+  }
+  .w-250 {
+    width: calc(var(--spacing) * 250);
   }
   .w-full {
     width: 100%;
@@ -290,9 +308,6 @@
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
-  .overflow-hidden {
-    overflow: hidden;
-  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -306,14 +321,23 @@
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }
+  .bg-black {
+    background-color: var(--color-black);
+  }
+  .bg-gray-100 {
+    background-color: var(--color-gray-100);
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
-  .bg-white {
-    background-color: var(--color-white);
-  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
@@ -332,6 +356,9 @@
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
+  }
+  .text-center {
+    text-align: center;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -390,6 +417,11 @@
   .md\:grid-cols-3 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
     }
   }
 }

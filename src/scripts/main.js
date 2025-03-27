@@ -5,6 +5,7 @@
  */
 
 import { stays } from './stays.js'
+import { loadCharacters } from './utils.js';
 
 // Seleccionamos los elementos del DOM que vamos a necesitar
 const logo = document.querySelector('#logo');
@@ -14,12 +15,56 @@ const addGuestsInput = document.querySelector('#addGuestsInput');
 const searchButton = document.querySelector('#searchButton');
 const ocultarsearch = document.querySelector('#ocultar-logo');
 const lugaresContainer = document.querySelector('#citiesContainer');
-const botoncerrar = document.querySelector('#botoncerrar');
 const botonguest = document.querySelector('#button-guest');
 const display = document.querySelector('#display');
 const botonguestN = document.querySelector('#button-guest-N');
 const displayN = document.querySelector('#display-n');
 const buttonGuestContainer = document.querySelector('#button-guest-container');
+const editar = document.querySelector('#edit');
+const botoncerrar = document.querySelector('#botoncerrar');
+const alojamientos = document.querySelector('#stays');
+console.log(alojamientos);
+
+// Funcion para cargar los alojamientos
+loadCharacters(stays, alojamientos);
+
+// Función para mostrar las botones edit y cerrar
+const showButtons = () => {
+    editar.classList.remove('hidden');
+    botoncerrar.classList.remove('hidden');
+};
+
+// Función para ocultar las botones edit y cerrar
+const hideButtons = () => {
+    editar.classList.add('hidden');
+    botoncerrar.classList.add('hidden');
+    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4');
+};
+
+// Evento para mostrar las botones edit y cerrar
+addLocationInput.addEventListener('click', showButtons);
+addGuestsInput.addEventListener('click', showButtons);
+
+// Evento para ocultar las botones edit y cerrar
+// botoncerrar.addEventListener('click', hideButtons);
+
+// Función para cerrar las búsquedas
+const closeSearch = () => {
+    // Oculta los botones "Edit" y "Cerrar"
+    editar.classList.add('hidden');
+    botoncerrar.classList.add('hidden');
+
+    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
+    searchContainer.classList.add('relative', 'flex', 'justify-center', 'sm:flex-row', 'sm:justify-end', 'items-center', 'mx-auto', 'px-8', 'py-2', 'bg-white', 'rounded-lg', 'shadow-md');
+    addLocationInput.classList.remove('w-full', 'mb-2');
+    addGuestsInput.classList.remove('w-full', 'mb-2');
+    searchButton.classList.add('hidden'); // Oculta el botón de búsqueda
+    lugaresContainer.classList.add('hidden'); // Oculta el contenedor de ciudades
+    buttonGuestContainer.classList.add('hidden'); // Oculta el contenedor de invitados
+};
+
+// Evento para cerrar las búsquedas al hacer clic en el botón
+botoncerrar.addEventListener('click', closeSearch);
 
 
 // Funcion para colapsar los input
@@ -30,6 +75,7 @@ const collapseInputs = () => {
     addGuestsInput.classList.add("w-full");
     searchButton.classList.remove("hidden");
     ocultarsearch.classList.add('hidden');
+
 }
 
 // Funcion para restaurar el estado original de los input
@@ -64,8 +110,10 @@ const showInputsInColumn = () => {
         searchContainer.classList.add('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]'); // Contenedor con flexbox
         addLocationInput.classList.add('w-full', 'mb-2'); // Input de ubicación arriba con margen inferior
         addGuestsInput.classList.add('w-full'); // Input de invitados debajo
-        searchButton.classList.add('w-30', 'mt-70'); // Botón debajo con margen superior
+        searchButton.classList.add('w-30', 'mt-40'); // Botón debajo con margen superior
         lugaresContainer.classList.add('top-full');
+        editar.classList.add('hidden');
+        
         // buttonGuestContainer.classList.add('w-250', 'h-90');
 
         // Asegúrate de que lugaresContainer esté pegado al addLocationInput
@@ -80,7 +128,7 @@ const showInputsInColumn = () => {
 
 // Función para restaurar el diseño original
 const restoreInputsLayout = () => {
-    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[400px]');
+    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
     addLocationInput.classList.remove( 'mb-2');
     addGuestsInput.classList.remove('mb-2');
     searchButton.classList.remove('w-40', 'mt-2', 'justify-center');
@@ -94,9 +142,14 @@ addLocationInput.addEventListener('click', (e) => {
     showInputsInColumn();
 });
 
+addGuestsInput.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showInputsInColumn
+})
+
 // Funcion para ocultar los lugares
-addGuestsInput.addEventListener('click', () => {
-    // e.stopPropagation(); // Evita que el evento se propague al documento
+addGuestsInput.addEventListener('click', (e) => {
+    e.stopPropagation(); // Evita que el evento se propague al documento
     restoreInputsLayout(); // Oculta el lugaresContainer al seleccionar el addGuestsInput
 });
 
@@ -151,7 +204,6 @@ document.addEventListener('click', (e) => {
         restoreInputsLayout();
     }
 });
-
 
 
 // Funcion para mostrar los huespedes

@@ -26,23 +26,39 @@ const alojamientos = document.querySelector('#stays');
 
 
 
+// Evento para mostrar el lugaresContainer al hacer clic en addLocationInput
+addLocationInput.addEventListener('click', (e) => {
+    e.stopPropagation(); // Evita que el evento se propague al documento
+    lugaresContainer.classList.remove('hidden'); // Muestra el contenedor
+});
+
+// Evento para seleccionar un elemento de lugaresContainer
+lugaresContainer.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+        addLocationInput.value = e.target.textContent;
+        lugaresContainer.classList.add('hidden'); 
+        searchContainer.classList.add('w-full');
+    }
+})
+
+
 // Funcion para cargar los alojamientos
 loadCharacters(stays, alojamientos);
 console.log(stays);
 
 
-// Función para mostrar las botones edit y cerrar
+// Función para mostrar las botones editar y cerrar
 const showButtons = () => {
     editar.classList.remove('hidden');
     botoncerrar.classList.remove('hidden');
 };
 
 // Función para ocultar las botones edit y cerrar
-const hideButtons = () => {
-    editar.classList.add('hidden');
-    botoncerrar.classList.add('hidden');
-    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4');
-};
+// const hideButtons = () => {
+//     editar.classList.add('hidden');
+//     botoncerrar.classList.add('hidden');
+//     searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4');
+// };
 
 // Evento para mostrar las botones edit y cerrar
 addLocationInput.addEventListener('click', showButtons);
@@ -51,32 +67,11 @@ addGuestsInput.addEventListener('click', showButtons);
 // Evento para ocultar las botones edit y cerrar
 // botoncerrar.addEventListener('click', hideButtons);
 
-// Función para cerrar las búsquedas
-const closeSearch = () => {
-    // Oculta los botones "Edit" y "Cerrar"
-    editar.classList.add('hidden');
-    botoncerrar.classList.add('hidden');
-    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
-    searchContainer.classList.add('relative', 'flex', 'justify-center', 'sm:flex-row', 'sm:justify-end', 'items-center', 'mx-auto', 'px-8', 'py-2', 'bg-white', 'rounded-lg', 'shadow-md');
-    addLocationInput.classList.remove('w-full', 'mb-2');
-    addGuestsInput.classList.remove('w-full', 'mb-2');
-    searchButton.classList.add('hidden'); // Oculta el botón de búsqueda
-    lugaresContainer.classList.add('hidden'); // Oculta el contenedor de ciudades
-    buttonGuestContainer.classList.add('hidden'); // Oculta el contenedor de invitados
-
-    //Limpia los valores de los inputs
-    addLocationInput.value = "";
-    addGuestsInput.value = "0";
-};
-
-// Evento para cerrar las búsquedas al hacer clic en el botón
-botoncerrar.addEventListener('click', closeSearch);
-
 
 // Funcion para colapsar los input
 const collapseInputs = () => {
     logo.classList.add('hidden');
-    searchContainer.classList.add("w-full", "justify-center", "h-50");
+    searchContainer.classList.add("w-full", "justify-center", "h-15");
     addLocationInput.classList.add("w-full");
     addGuestsInput.classList.add("w-full");
     searchButton.classList.remove("hidden");
@@ -87,7 +82,7 @@ const collapseInputs = () => {
 // Funcion para restaurar el estado original de los input
 const restoreInputs = () => {
     logo.classList.remove('hidden');
-    searchContainer.classList.remove("w-full", "justify-center", "h-50");
+    searchContainer.classList.remove("w-full", "justify-center", "h-15");
     addLocationInput.classList.remove('w-full');
     addGuestsInput.classList.remove('w-full');
     searchButton.classList.add('hidden');
@@ -126,7 +121,7 @@ const showInputsInColumn = () => {
         const inputRect = addLocationInput.getBoundingClientRect();
         lugaresContainer.style.top = `${inputRect.bottom}px`;
         lugaresContainer.style.left = `${inputRect.left -20}px`;
-        lugaresContainer.style.top = `${inputRect.top -165}px`;
+        lugaresContainer.style.top = `${inputRect.top -135}px`;
         lugaresContainer.style.width = `${inputRect.width}px`;
         lugaresContainer.classList.remove('hidden');
     }
@@ -165,6 +160,27 @@ document.addEventListener('click', (e) => {
         restoreInputsLayout();
     }
 }); 
+
+// Función para cerrar las búsquedas
+const closeSearch = () => {
+    // Oculta los botones "Edit" y "Cerrar"
+    editar.classList.add('hidden');
+    botoncerrar.classList.add('hidden');
+    searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
+    searchContainer.classList.add('relative', 'flex', 'justify-center', 'sm:flex-row', 'sm:justify-end', 'items-center', 'mx-auto', 'px-8', 'py-2', 'bg-white', 'rounded-lg', 'shadow-md');
+    addLocationInput.classList.remove('w-full', 'mb-2');
+    addGuestsInput.classList.remove('w-full', 'mb-2');
+    searchButton.classList.add('hidden'); // Oculta el botón de búsqueda
+    lugaresContainer.classList.add('hidden'); // Oculta el contenedor de ciudades
+    buttonGuestContainer.classList.add('hidden'); // Oculta el contenedor de invitados
+
+    //Limpia los valores de los inputs
+    addLocationInput.value = "";
+    addGuestsInput.value = "0";
+};
+
+// Evento para cerrar las búsquedas al hacer clic en el botón
+botoncerrar.addEventListener('click', closeSearch);
 
 // Funcion para mostrar los invitados
 addGuestsInput.addEventListener('click', (e) => {
@@ -265,6 +281,6 @@ searchButton.addEventListener('click', (e) => {
     const filtrocontador = document.querySelector('#contador');
     filtrocontador.textContent = `${filtered.length} `;
     loadCharacters(filtered, alojamientos);
-    console.log(filtered);
+    
 })
 

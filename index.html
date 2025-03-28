@@ -18,14 +18,14 @@
             <p id="edit" class="hidden sm:hidden text-1xl ml-0 text-black">Edit your search</p>
             <button id="botoncerrar" class="hidden sm:hidden mr-0 font-bold text-2xl text-black">X</button>
         </div>
-        <div id="searchContainer" class="relative flex justify-center w-90 sm:flex-row sm:justify-end items-center mx-auto px-8 py-2 mr-8 
+        <div id="searchContainer" class="relative flex sm:flex-col md:flex-row  items-center mx-auto px-8 py-2 mr-8 
                 bg-white-700 rounded-lg shadow-md">
             
             <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addLocationInput" placeholder="Add location">
-            <ul id="citiesContainer" class="hidden  text-decoration-none top-full left-0 p-8 text-black bg-gray-100 shadow-md z-50">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Helsinki,Finland</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Turku,Finland</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Vaasa,Finland</li>
+            <ul id="citiesContainer" class="hidden absolute text-decoration-none top-full left-0 p-8 text-black bg-gray-100 shadow-md z-50">
+                <li class="px-4 py-2 hover:bg-amber-400 cursor-pointer">Helsinki,Finland</li>
+                <li class="px-4 py-2 hover:bg-amber-400 cursor-pointer">Turku,Finland</li>
+                <li class="px-4 py-2 hover:bg-amber-400 cursor-pointer">Vaasa,Finland</li>
             </ul>
             <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addGuestsInput"
                 placeholder="Add guests" value="0">
@@ -33,16 +33,16 @@
                     <div id="button-guest" class=" items-center p-4 text-white shadow-md z-50">
                         <p class="justify-center text-1xl text-black">Adults</p>
                         <span class="mb-4 ">Age 13 or Above</span><br>
-                        <button id="resta" class="px-2 mt-2 bg-black text-2xl text-white" value="-">-</button>
+                        <button id="resta" class="px-2 mt-2 bg-black text-2xl text-white cursor-pointer" value="-">-</button>
                         <span id="display" class="text-black">0</span>
-                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white" value="+">+</button>
+                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white cursor-pointer" value="+">+</button>
                     </div>
                     <div id="button-guest-N" class="justify-center items-center text-white">
                         <p class="justify-center text-1xl text-black">Childrens</p>
                         <span class="mb-4 ">Age 13 or Above</span><br>
-                        <button id="resta" class="px-2  mt-2 bg-black text-2xl text-white" value="-">-</button>
+                        <button id="resta" class="px-2  mt-2 bg-black text-2xl text-white cursor-pointer" value="-">-</button>
                         <span id="display-n" class="text-black">0</span>
-                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white" value="+">+</button>
+                        <button id="suma" class="px-2 mt-2 bg-black text-2xl text-white cursor-pointer" value="+">+</button>
                     </div>
                 </div>
             <button id="searchButton" class="hidden flex flex-col md:flex-row justify-center items-center px-2 py-2 w-50 h-10 bg-red-500 text-white 
@@ -55,7 +55,7 @@
                 Search
             </button>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
-                id="ocultar-logo" class="flex flex-col md:flex-row size-6 justify-center mt-2 ml-2 ">
+                id="ocultar-logo" class="flex  md:flex-row size-6 justify-center mt-2 ml-2 ">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>

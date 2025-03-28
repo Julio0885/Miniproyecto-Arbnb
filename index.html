@@ -23,9 +23,9 @@
             
             <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addLocationInput" placeholder="Add location">
             <ul id="citiesContainer" class="hidden  text-decoration-none top-full left-0 p-8 text-black bg-gray-100 shadow-md z-50">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad1</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad2</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">ciudad3</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Helsinki,Finland</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Turku,Finland</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Vaasa,Finland</li>
             </ul>
             <input class="w-32 px-2 py-2 border border-gray-200 rounded-lg" type="text" name="" id="addGuestsInput"
                 placeholder="Add guests" value="0">
@@ -63,10 +63,10 @@
     </header>
     <div class="flex justify-between items-center mt-8 mb-8 ml-12 mr-12">
         <h2>Stays in Fynlandia</h2>
-        <p><span>12 +</span>stays</p>
+        <p><span id="contador">12 +</span>stays</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20 ml-12 mr-12">
-        <div id="stays" class="flex flex-col ">
+    <div id="stays" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20 ml-12 mr-12">
+        <div class="flex flex-col ">
             <div class="mb-4">
                 <img class="aspect-video rounded-lg object-cover" src="./src/images/icons/search.svg" alt="Hotels" >
             </div>
@@ -82,7 +82,7 @@
                 <h3 id="title" class="font-bold text-1xl text-black">Stylis aparment in center of the city</h3>
             </div>
         </div>
-        <div id="stays" class="flex flex-col ">
+        <div class="flex flex-col ">
             <div class="mb-4">
                 <img class="aspect-video rounded-lg object-cover" src="./src/images/icons/search.svg" alt="Hotels" >
             </div>
@@ -98,7 +98,7 @@
                 <h3 id="title" class="font-bold text-1xl text-black">Stylis aparment in center of the city</h3>
             </div>
         </div>
-        <div id="stays" class="flex flex-col ">
+        <div class="flex flex-col ">
             <div class="mb-4">
                 <img class="aspect-video rounded-lg object-cover" src="./src/images/icons/search.svg" alt="Hotels" >
             </div>
@@ -113,10 +113,8 @@
                 <p id="rating" class=" inline-block mt-2 ml-2">4.9</p>
                 <h3 id="title" class="font-bold text-1xl text-black">Stylis aparment in center of the city</h3>
             </div>
-        </div>
-        
+        </div>       
     </div>
-
 </body>
-
 </html>
+

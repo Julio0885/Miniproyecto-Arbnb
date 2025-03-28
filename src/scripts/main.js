@@ -23,10 +23,13 @@ const buttonGuestContainer = document.querySelector('#button-guest-container');
 const editar = document.querySelector('#edit');
 const botoncerrar = document.querySelector('#botoncerrar');
 const alojamientos = document.querySelector('#stays');
-console.log(alojamientos);
+
+
 
 // Funcion para cargar los alojamientos
 loadCharacters(stays, alojamientos);
+console.log(stays);
+
 
 // Función para mostrar las botones edit y cerrar
 const showButtons = () => {
@@ -53,7 +56,6 @@ const closeSearch = () => {
     // Oculta los botones "Edit" y "Cerrar"
     editar.classList.add('hidden');
     botoncerrar.classList.add('hidden');
-
     searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
     searchContainer.classList.add('relative', 'flex', 'justify-center', 'sm:flex-row', 'sm:justify-end', 'items-center', 'mx-auto', 'px-8', 'py-2', 'bg-white', 'rounded-lg', 'shadow-md');
     addLocationInput.classList.remove('w-full', 'mb-2');
@@ -61,6 +63,10 @@ const closeSearch = () => {
     searchButton.classList.add('hidden'); // Oculta el botón de búsqueda
     lugaresContainer.classList.add('hidden'); // Oculta el contenedor de ciudades
     buttonGuestContainer.classList.add('hidden'); // Oculta el contenedor de invitados
+
+    //Limpia los valores de los inputs
+    addLocationInput.value = "";
+    addGuestsInput.value = "0";
 };
 
 // Evento para cerrar las búsquedas al hacer clic en el botón
@@ -131,7 +137,7 @@ const restoreInputsLayout = () => {
     searchContainer.classList.remove('flex', 'flex-col', 'items-center', 'w-full', 'px-4', 'py-4', 'min-h-[500px]');
     addLocationInput.classList.remove( 'mb-2');
     addGuestsInput.classList.remove('mb-2');
-    searchButton.classList.remove('w-40', 'mt-2', 'justify-center');
+    searchButton.classList.remove('w-30');
     lugaresContainer.classList.add('hidden');
     
 };
@@ -239,4 +245,26 @@ botonguest.addEventListener('click', (e) => {
         }
     }
 });
+
+// Funcion para busquedas de inputs
+searchButton.addEventListener('click', (e) => {
+    let cityValue = (addLocationInput.value).toLowerCase().split(",")[0];
+    let guestValue = parseInt(addGuestsInput.value) || 0
+    let filtered = [];
+
+    if(cityValue !== "" && guestValue === 0) {
+        filtered = stays.filter((stay) => stay.city.toLocaleLowerCase() === cityValue)
+    }else if(cityValue === "" && guestValue > 0){
+        filtered = stays.filter((stay) => stay.maxGuests >= guestValue)
+    }else if(cityValue !== "" && guestValue >= 0){
+        filtered = stays.filter((stay) => stay.maxGuests >= guestValue 
+        && stay.city.toLocaleLowerCase() === cityValue) 
+    }
+
+    // Actualizamos el contador con el numero de alojamientos filtrados
+    const filtrocontador = document.querySelector('#contador');
+    filtrocontador.textContent = `${filtered.length} `;
+    loadCharacters(filtered, alojamientos);
+    console.log(filtered);
+})
 
